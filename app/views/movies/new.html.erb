@@ -1,0 +1,50 @@
+<h1>New movie</h1>
+
+<%= form_with scope: :movie, url: movies_path, local: true do |form| %>
+
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title, required: true %>
+  </p>
+
+  <p>
+    <%= form.label :description %><br>
+    <%= form.text_area :description, required: true %>
+  </p>
+
+  <p>
+    <%= form.label :runtime %><br>
+    <%= form.number_field :runtime, in: 1...1000, step: 1, required: true %>
+  </p>
+
+  <p>
+    <%= form.label :genre_list %><br>
+    <%= form.select(:genre_list, @tags, {}, { multiple: true, include_blank: false, required: true}) %>
+  </p>
+
+  <p>
+    <%= form.label :stars %><br>
+    <%= form.select(:stars, @people.map{|person| [person.first_name + ' ' + person.last_name, person.id]}, {}, { multiple: true, include_blank: false, required: true}) %>
+  </p>
+
+  <p>
+    <%= form.label :writers %><br>
+    <%= form.select(:writers, @people.map{|person| [person.first_name + ' ' + person.last_name, person.id]}, {}, { multiple: true, include_blank: false, required: true}) %>
+  </p>
+
+  <p>
+    <%= form.label :directors %><br>
+    <%= form.select(:directors, @people.map{|person| [person.first_name + ' ' + person.last_name, person.id]}, {}, { multiple: true, include_blank: false, required: true}) %>
+  </p>
+
+  <p>
+    <%= link_to '<button class="btn btn-primary btn-sm">Cancel</button>'.html_safe, movies_path() %>
+    <%= form.submit class: "btn btn-primary" %>
+  </p>
+
+<% end %>
+
+<%= javascript_tag "$('#genre_list').select2()" %>
+<%= javascript_tag "$('#movie_stars').select2()" %>
+<%= javascript_tag "$('#movie_writers').select2()" %>
+<%= javascript_tag "$('#movie_directors').select2()" %>

@@ -1,0 +1,87 @@
+<h1>Movies
+  <a href="<%= new_movie_path() %>" class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> Add movie</a>
+  <label class="btn btn-info btn-sm">
+    <%= form_with(url: {action: :import}, multipart: true, id: 'form') do %>
+      <i class="fas fa-file-import"></i> Upload movies
+      <span style="display:none;">
+        <%= file_field_tag 'file', id: "file-upload" %>
+      </span>
+    <% end %>
+  </label>
+</h1>
+
+<div class="movie-cards">
+<% for movie in @movies %>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title"><%= movie.title %>
+        <% for genre in movie.genre_list %>
+          <span class="badge badge-info"><%= genre %></span>
+        <% end %>
+      </h5>
+      <h6 class="card-subtitle text-muted">
+        <span title="runtime">
+          <i class="far fa-clock"></i> <%= movie.runtime.to_s + "'" %>
+        </span>
+        &nbsp;
+        <span title="avg rating">
+          <% if movie.ratings.empty? %>
+            <i class="far fa-meh-blank"></i> -
+          <% elsif movie.ratings.average(:score) < 3 %>
+            <i class="far fa-tired"></i> <%= movie.ratings.average(:score) %>
+          <% elsif movie.ratings.average(:score) < 5 %>
+            <i class="far fa-frown"></i> <%= movie.ratings.average(:score) %>
+          <% elsif movie.ratings.average(:score) < 7 %>
+            <i class="far fa-smile"></i> <%= movie.ratings.average(:score) %>
+          <% elsif movie.ratings.average(:score) < 9 %>
+            <i class="far fa-grin"></i> <%= movie.ratings.average(:score) %>
+          <% else %>
+            <i class="far fa-grin-stars"></i> <%= movie.ratings.average(:score) %>
+          <% end %>
+        </span>
+      </h6>
+
+      <p><%= movie.description %></p>
+      <p>
+        <% if movie.directors.length >1 %>
+          Directors:
+        <% else %>
+          Director:
+        <% end %>
+        <% for d in movie.directors %>
+          <a href="<%= person_path(d.person.id) %>"><%= d.person.first_name + ' ' + d.person.last_name %></a>
+        <% end %>
+      </p>
+      <p>
+        <% if movie.writers.length >1 %>
+          Writers:
+        <% else %>
+          Writer:
+        <% end %>
+        <% for w in movie.writers %>
+          <a href="<%= person_path(w.person.id) %>"><%= w.person.first_name + ' ' + w.person.last_name %></a>
+        <% end %>
+      </p>
+      <p>
+        <% if movie.stars.length >1 %>
+          Stars:
+        <% else %>
+          Star:
+        <% end %>
+        <% for s in movie.stars %>
+          <a href="<%= person_path(s.person.id) %>"><%= s.person.first_name + ' ' + s.person.last_name %></a>
+        <% end %>
+      </p>
+      <button type="button" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Add rating</button>
+      <%= link_to '<button class="btn btn-primary btn-sm"><i class="fas fa-edit"></i> Edit movie</button>'.html_safe, edit_movie_path(movie.id) %>
+      <%= link_to '<button class="btn btn-primary btn-sm"><i class="fas fa-trash"></i> Remove movie</button>'.html_safe, movie_path(movie.id), method: :delete %>
+
+    </div>
+  </div>
+<% end %>
+
+<script>
+  $('#file-upload').on('change', function() {
+      $('#form').submit()
+  });
+</script>

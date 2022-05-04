@@ -1,0 +1,250 @@
+<a href="<%= movies_path() %>"><- Back to movies</a>
+
+<h1><%= @person.first_name + ' ' + @person.last_name %> </h1>
+
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" id="star-tab" data-toggle="tab" href="#star" aria-controls="star" aria-selected="true">Star</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="director-tab" data-toggle="tab" href="#director" aria-controls="director" aria-selected="false">Director</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="writer-tab" data-toggle="tab" href="#writer" aria-controls="writer" aria-selected="false">Writer</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="stats-tab" data-toggle="tab" href="#stats" aria-controls="stats" aria-selected="false">Stats</a>
+  </li>
+</ul>
+
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="star" role="tabpanel" aria-labelledby="star-tab">
+    <br><br>
+    <% for m in @star %>
+      <div class="card mt-2">
+        <div class="card-body">
+          <h5 class="card-title"><%= m.title %></h5>
+          <h6 class="card-subtitle text-muted">
+            <span title="runtime">
+              <i class="far fa-clock"></i> <%= m.runtime.to_s + "'" %>
+            </span>
+            &nbsp;
+            <span title="avg rating">
+              <% if m.ratings.empty? %>
+                <i class="far fa-meh-blank"></i> -
+              <% elsif m.ratings.average(:score) < 3 %>
+                 <i class="far fa-tired"></i> <%= m.ratings.average(:score) %>
+              <% elsif m.ratings.average(:score) < 5 %>
+                 <i class="far fa-frown"></i> <%= m.ratings.average(:score) %>
+              <% elsif m.ratings.average(:score) < 7 %>
+                 <i class="far fa-smile"></i> <%= m.ratings.average(:score) %>
+              <% elsif m.ratings.average(:score) < 9 %>
+                 <i class="far fa-grin"></i> <%= m.ratings.average(:score) %>
+              <% else %>
+                 <i class="far fa-grin-stars"></i> <%= m.ratings.average(:score) %>
+              <% end %>
+            </span>
+          </h6>
+
+          <p><%= m.description %></p>
+          <p>
+            <% if m.directors.length >1 %>
+              Directors:
+            <% else %>
+              Director:
+            <% end %>
+            <% for d in m.directors %>
+              <a href="<%= person_path(d.person.id) %>"><%= d.person.first_name + ' ' + d.person.last_name %></a>
+            <% end %>
+          </p>
+          <p>
+            <% if m.writers.length >1 %>
+              Writers:
+            <% else %>
+              Writer:
+            <% end %>
+            <% for w in m.writers %>
+              <a href="<%= person_path(w.person.id) %>"><%= w.person.first_name + ' ' + w.person.last_name %></a>
+            <% end %>
+          </p>
+          <p>
+            <% if m.stars.length >1 %>
+              Stars:
+            <% else %>
+              Star:
+            <% end %>
+            <% for s in m.stars %>
+              <a href="<%= person_path(s.person.id) %>"><%= s.person.first_name + ' ' + s.person.last_name %></a>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+  <div class="tab-pane fade" id="director" role="tabpanel" aria-labelledby="director-tab">
+    <br><br>
+    <% for m in @director %>
+      <div class="card mt-1">
+        <div class="card-body">
+          <h5 class="card-title"><%= m.title %></h5>
+          <h6 class="card-subtitle text-muted">
+            <span title="runtime">
+              <i class="far fa-clock"></i> <%= m.runtime.to_s + "'" %>
+            </span>
+            &nbsp;
+            <span title="avg rating">
+              <% if m.ratings.empty? %>
+                <i class="far fa-meh-blank"></i> -
+              <% elsif m.ratings.average(:score) < 3 %>
+                 <i class="far fa-tired"></i> <%= m.ratings.average(:score) %>
+              <% elsif m.ratings.average(:score) < 5 %>
+                 <i class="far fa-frown"></i> <%= m.ratings.average(:score) %>
+              <% elsif m.ratings.average(:score) < 7 %>
+                 <i class="far fa-smile"></i> <%= m.ratings.average(:score) %>
+              <% elsif m.ratings.average(:score) < 9 %>
+                 <i class="far fa-grin"></i> <%= m.ratings.average(:score) %>
+              <% else %>
+                 <i class="far fa-grin-stars"></i> <%= m.ratings.average(:score) %>
+              <% end %>
+            </span>
+          </h6>
+
+          <p><%= m.description %></p>
+          <p>
+            <% if m.directors.length >1 %>
+              Directors:
+            <% else %>
+              Director:
+            <% end %>
+            <% for d in m.directors %>
+              <a href="<%= person_path(d.person.id) %>"><%= d.person.first_name + ' ' + d.person.last_name %></a>
+            <% end %>
+          </p>
+          <p>
+            <% if m.writers.length >1 %>
+              Writers:
+            <% else %>
+              Writer:
+            <% end %>
+            <% for w in m.writers %>
+              <a href="<%= person_path(w.person.id) %>"><%= w.person.first_name + ' ' + w.person.last_name %></a>
+            <% end %>
+          </p>
+          <p>
+            <% if m.stars.length >1 %>
+              Stars:
+            <% else %>
+              Star:
+            <% end %>
+            <% for s in m.stars %>
+              <a href="<%= person_path(s.person.id) %>"><%= s.person.first_name + ' ' + s.person.last_name %></a>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="tab-pane fade" id="writer" role="tabpanel" aria-labelledby="writer-tab">
+       <br><br>
+    <% for m in @writer %>
+      <div class="card mt-2">
+        <div class="card-body">
+          <h5 class="card-title"><%= m.title %></h5>
+          <h6 class="card-subtitle text-muted">
+            <span title="runtime">
+              <i class="far fa-clock"></i> <%= m.runtime.to_s + "'" %>
+            </span>
+            &nbsp;
+            <span title="avg rating">
+              <% if m.ratings.empty? %>
+                <i class="far fa-meh-blank"></i> -
+              <% elsif m.ratings.average(:score) < 3 %>
+                 <i class="far fa-tired"></i> <%= m.ratings.average(:score) %>
+              <% elsif m.ratings.average(:score) < 5 %>
+                 <i class="far fa-frown"></i> <%= m.ratings.average(:score) %>
+              <% elsif m.ratings.average(:score) < 7 %>
+                 <i class="far fa-smile"></i> <%= m.ratings.average(:score) %>
+              <% elsif m.ratings.average(:score) < 9 %>
+                 <i class="far fa-grin"></i> <%= m.ratings.average(:score) %>
+              <% else %>
+                 <i class="far fa-grin-stars"></i> <%= m.ratings.average(:score) %>
+              <% end %>
+            </span>
+          </h6>
+
+          <p><%= m.description %></p>
+          <p>
+            <% if m.directors.length >1 %>
+              Directors:
+            <% else %>
+              Director:
+            <% end %>
+            <% for d in m.directors %>
+              <a href="<%= person_path(d.person.id) %>"><%= d.person.first_name + ' ' + d.person.last_name %></a>
+            <% end %>
+          </p>
+          <p>
+            <% if m.writers.length >1 %>
+              Writers:
+            <% else %>
+              Writer:
+            <% end %>
+            <% for w in m.writers %>
+              <a href="<%= person_path(w.person.id) %>"><%= w.person.first_name + ' ' + w.person.last_name %></a>
+            <% end %>
+          </p>
+          <p>
+            <% if m.stars.length >1 %>
+              Stars:
+            <% else %>
+              Star:
+            <% end %>
+            <% for s in m.stars %>
+              <a href="<%= person_path(s.person.id) %>"><%= s.person.first_name + ' ' + s.person.last_name %></a>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="tab-pane fade" id="stats" role="tabpanel" aria-labelledby="stats-tab">
+    <div class="card" style="width: 450px;">
+      <div class="card-body container">
+        <div class="row">
+          <p class="col">Movies starred:</p>
+          <p class="col"><%= @star.count %></p>
+        </div>
+        <div class="row">
+          <p class="col">Movies written:</p>
+          <p class="col"><%= @writer.count %></p>
+        </div>
+        <div class="row">
+          <p class="col">Movies directed:</p>
+          <p class="col"><%= @director.count %></p>
+        </div>
+        <div class="row">
+          <p class="col">Total movies participated::</p>
+          <p class="col"><%= @director.count + @writer.count + @star.count %></p>
+        </div>
+        <div class="row">
+          <p class="col">Avg rating of movies starred:</p>
+          <p class="col"><%= @star.map{|movie| movie.ratings.average(:score)}.sum %></p>
+        </div>
+        <div class="row">
+          <p class="col">Avg rating of movies directed:</p>
+          <p class="col"><%= @director.map{|movie| movie.ratings.average(:score)}.sum %></p>
+        </div>
+        <div class="row">
+          <p class="col">Avg rating of movies written:</p>
+          <p class="col"><%= @writer.map{|movie| movie.ratings.average(:score)}.sum %></p>
+        </div>
+         <div class="row">
+          <p class="col">Avg rating of total movies:</p>
+          <p class="col"><%= (@writer.map{|movie| movie.ratings.average(:score)}.sum + @director.map{|movie| movie.ratings.average(:score)}.sum + @star.map{|movie| movie.ratings.average(:score)}.sum) / 3 %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

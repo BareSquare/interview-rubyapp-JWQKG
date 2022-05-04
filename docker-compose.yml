@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  db:
+    container_name: the-postgres
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: rails_user
+      POSTGRES_PASSWORD: mysecretpassword
+    ports:
+      - "5437:5432"

@@ -1,0 +1,23 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: localhost
+  port: 5437
+  username: rails_user
+  password: mysecretpassword
+
+development:
+  <<: *default
+  database: mini_project_development
+
+test:
+  <<: *default
+  database: mini_project_test
+
+production:
+  <<: *default
+  database: mini_project_production
+  username: mini_project
+  password: <%= ENV['MINI_PROJECT_DATABASE_PASSWORD'] %>

@@ -1,0 +1,60 @@
+[{
+		"title": "The Shawshank Redemption",
+		"description": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+		"runtime": 144,
+		"stars": ["Tim Robbins", "Morgan Freeman", "Bob Gunton"],
+		"directors": ["Frank Darabont"],
+		"writers": [],
+		"ratings": [9, 9.5, 10, 8, 7.5, 8, 9]
+	},
+	{
+		"title": "The Godfather",
+		"description": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
+		"runtime": 180,
+		"stars": ["Marlon Brando", "Al Pacino", "James Caan"],
+		"directors": ["Francis Ford Coppola"],
+		"writers": ["Mario Puzo", "Francis Ford Coppola", "Mario Puzo"],
+		"ratings": [5, 10, 9, 8, 8.69, 9.24, 9, 6.89],
+    "genres" : ["crime", "drama"]
+	},
+	{
+		"title": "American History X",
+		"description": "A former neo-nazi skinhead tries to prevent his younger brother from going down the same wrong path that he did.",
+		"runtime": 120,
+		"stars": ["Edward Norton", "Edward Furlong", "Beverly D'Angelo"],
+		"directors": ["Tony Kaye"],
+		"writers": ["David McKenna"],
+		"ratings": [5, 8, 9.25, 5.35, 10, 9, 9.5, 6.5],
+    "genres" : ["drama"]
+	},
+	{
+		"title": "Cinema Paradiso",
+		"description": "A filmmaker recalls his childhood when falling in love with the pictures at the cinema of his home village and forms a deep friendship with the cinema's projectionist. ",
+		"runtime": 155,
+		"stars": ["Philippe Noiret", "Enzo Cannavale", "Antonella Attili"],
+		"directors": ["Giuseppe Tornatore"],
+		"writers": ["Giuseppe Tornatore"],
+		"ratings": [8, 7, 9, 9.145, 8.35, 7.69, 8],
+    "genres" : ["drama"]
+	},
+	{
+		"title": "Dune",
+		"description": "A Duke's son leads desert warriors against the galactic emperor and his father's evil nemesis when they assassinate his father and free their desert world from the emperor's rule. ",
+		"runtime": 137,
+		"stars": ["Kyle MacLachlan", "Virginia Madsen", "Francesca Annis"],
+		"directors": ["David Lynch"],
+		"writers": ["Frank Herbert", "David Lynch"],
+		"ratings": [5, 8, 7.124, 3.18, 8.5, 6.7, 0.4, 0, 10, 13],
+    "genres" : ["action", "adventure", "sci-fi"]
+	},
+	{
+		"title": "Back to the Future",
+		"description": "Marty McFly, a 17-year-old high school student, is accidentally sent thirty years into the past in a time-traveling DeLorean invented by his close friend, the eccentric scientist Doc Brown. ",
+		"runtime": 121.68,
+		"stars": ["Michael J. Fox", "Christopher Lloyd", "Lea Thompson"],
+		"directors": ["Robert Zemeckis"],
+    "writers": ["Robert Zemeckis", "Bob Gale"],
+    "ratings": [5, 8, 7.124, 3.18, 8.5, 6.7, 0.4, 0, 10],
+    "genres" : ["Adventure", "Comedy", "sci-fi"]
+	}
+]
