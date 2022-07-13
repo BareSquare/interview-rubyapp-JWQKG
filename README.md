@@ -18,8 +18,10 @@ as well as mass import movies via a file (sample file can be found at resources/
 Each movie is described by genres, runtime, ratings, cast, directors and writers.
 Moreover, there should be a page for each "participant" (cast, writer or director) displaying the movies he/she got involved, as well as stats like average ratings etc.
 
-A colleague of yours implemented the first deliverable. It is your job to review the code before the launch. Your tasks include:
+A colleague of yours implemented the first deliverable. It is your job to review the code before the launch. 
 
-- To provide a written code review on the project (in English). Comment on correctness, performance, coding style and anything else you think may be wrong with it.
+Your task is:
 
-- To rewrite parts of the project (if needed) so that you improve negative points you found in the previous task. Please keep in mind that the quality of the code has to be what you'd consider _production ready_.
+- To provide a written code review on the project. Comment on correctness, performance, coding style and anything else you think may be wrong with it.
+
+- ~~To rewrite parts of the project (if needed) so that you improve negative points you found in the previous task. Please keep in mind that the quality of the code has to be what you'd consider _production ready_.~~
